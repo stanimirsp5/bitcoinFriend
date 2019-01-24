@@ -26,9 +26,9 @@
 
         $conn->close();
     }
-    saveDbRecords();
+    //saveDbRecords();
 
-    function loadDbRecords() {
+    function loadDbRecords($currency) {
         $servername = "localhost";
         $username = "root";
         $password = '';
@@ -38,25 +38,24 @@
 
         $sql = "SELECT id, currency, bitcoinValue, createdOn FROM Bitcoin";
         $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            // output data of each row
-            while($row = $result->fetch_assoc()) {
-                echo "Country currency: " . $row["currency"]. ", BitcoinValue " . $row["bitcoinValue"]. " Created on: ". $row["createdOn"].  "<br>";
-            }
-        } else {
-            echo "0 results";
-        }
+        // if ($result->num_rows > 0) {
+        //     // output data of each row
+        //     while($row = $result->fetch_assoc()) {
+        //         echo "Country currency: " . $row["currency"]. ", BitcoinValue " . $row["bitcoinValue"]. " Created on: ". $row["createdOn"].  "<br>";
+        //     }
+        // } else {
+        //     echo "0 results";
+        // }
         $conn->close();
+        return $result;
     }
     
     if(array_key_exists('test',$_POST)){
         loadDbRecords();
     }
 ?>
-<h2>Current bitcoin saved</h2>
+<!-- <h2>Current bitcoin saved</h2>
 
 <form method="post">
     <input type="submit" name="test" id="test" value="List records" /><br/>
-</form>
-<input type="button" value="Go back" class="homebutton" id="btnHome" 
-onClick="document.location.href='http://localhost/bitcoin/bitcoin.php'"/>
+</form> -->
