@@ -1,5 +1,6 @@
 <?php
     function saveDbRecords() {
+        echo "etstettettset";
         $servername = "localhost";
         $username = "root";
         $password = '';
@@ -38,20 +39,15 @@
 
         $sql = "SELECT id, currency, bitcoinValue, createdOn FROM Bitcoin";
         $result = $conn->query($sql);
-        // if ($result->num_rows > 0) {
-        //     // output data of each row
-        //     while($row = $result->fetch_assoc()) {
-        //         echo "Country currency: " . $row["currency"]. ", BitcoinValue " . $row["bitcoinValue"]. " Created on: ". $row["createdOn"].  "<br>";
-        //     }
-        // } else {
-        //     echo "0 results";
-        // }
         $conn->close();
         return $result;
     }
     
     if(array_key_exists('test',$_POST)){
         loadDbRecords();
+    }
+    if(array_key_exists('saveData',$_POST)){
+        saveDbRecords();
     }
 ?>
 <!-- <h2>Current bitcoin saved</h2>
