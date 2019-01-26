@@ -1,6 +1,6 @@
 <?php
+saveDbRecords();
     function saveDbRecords() {
-        echo "etstettettset";
         $servername = "localhost";
         $username = "root";
         $password = '';
@@ -20,38 +20,43 @@
         VALUES ('$currency', '$btc')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "New bitcoin record created successfully <br>";
+           // echo "New bitcoin record created successfully <br>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
         $conn->close();
+        // header("Location:http://localhost/bitcoin/action.php");
     }
-    //saveDbRecords();
 
-    function loadDbRecords($currency) {
-        $servername = "localhost";
-        $username = "root";
-        $password = '';
-        $dbname = "bitcoindb";
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        $sql = "SELECT id, currency, bitcoinValue, createdOn FROM Bitcoin";
-        $result = $conn->query($sql);
-        $conn->close();
-        return $result;
-    }
-    
-    if(array_key_exists('test',$_POST)){
-        loadDbRecords();
-    }
-    if(array_key_exists('saveData',$_POST)){
-        saveDbRecords();
-    }
 ?>
-<!-- <h2>Current bitcoin saved</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>BitcoinPal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+}
+.header {
+  padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+</style>
+</head>
+<body>
 
-<form method="post">
-    <input type="submit" name="test" id="test" value="List records" /><br/>
-</form> -->
+<div class="header">
+  <h1>Saved</h1>
+</form>
+</div>
+</div>
+</body>
+</html>
+<!-- http://localhost/bitcoin/bitcoin.php -->

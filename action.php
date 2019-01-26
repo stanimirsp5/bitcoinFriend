@@ -73,7 +73,7 @@ body {
 <body>
 <?php  
 require_once("phpChart_Lite/conf.php");
-include 'bitcoinDB.php';
+include 'bitcoinLoad.php';
 
 $url='https://bitpay.com/api/rates';
 $json=json_decode( file_get_contents( $url ) );
@@ -111,14 +111,14 @@ $bitcoinValue = round($btc, 2);
 
 <div class="navbar">
 
-<form method="post" action="bitcoinDB.php">
+<form method="get" action="bitcoinDB.php">
  <input type="hidden" name="currency" value="<?=$currency?>">
  <input type="hidden" name="btc" value="<?=$bitcoinValue?>">
  <input class="button" id="save-btn" type="submit" value="Save search info">
 </form>
 
  <input class="button" id="list-records" type="button" name="loadAllRecords" value="List records" />
- <input class="button" id="toggle-graph" type="button" name="loadAllRecords" value="Hide graph" />
+ <input class="button" id="toggle-graph" type="button" name="hideGraph" value="Hide graph" />
 <input class="button"  id="go-back" type="button" value="Go back" class="homebutton" id="btnHome" 
 onClick="document.location.href='http://localhost/bitcoin/bitcoin.php'"/>
 </div>
